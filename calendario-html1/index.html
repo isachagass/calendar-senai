@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Calendário de Outubro</title>
+</head>
+<body>
+    <main>
+       <section>
+        <div id="esquerda">
+            <img src="images/outubro_rosa - prevencao_cancer.png" alt="Outubro Rosa, Prevenção ao câncer de mama">
+            <p>Mês do combate <br> ao Câncer de Mama</p>
+        </div>
+
+        <div id="direita">
+            <div id="container">
+            <h1>2024</h1>
+            <table>
+                <tr>
+                    <th>Dom</th>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sáb</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>01</td>
+                    <td>02</td>
+                    <td>03</td>
+                    <td>04</td>
+                    <td>05</td>
+                </tr>
+                <tr>
+                    <td>06</td>
+                    <td>07</td>
+                    <td>08</td>
+                    <td>09</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td class="feriado">12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td class="feriado">28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <article>
+                <p>12 Dia de Nossa Senhora Aparecida</p>
+                <p>28 Dia do Servidor Público</p>
+                
+            </article>
+        </div>
+        </div>
+       </section>
+    </main>
+    
+    <script>
+        function destacarDia(){
+            const data = new Date();
+            const hoje = data.getDate();
+
+            const dias = document.querySelectorAll('table td');
+
+            dias.forEach((dia) => {
+                if(parseInt(dia.innerText) === hoje) {
+                    dia.classList.add('diaAtual');
+                }
+            }) 
+        }
+        window.onload = destacarDia;
+    
+    </script>
+</body>
+</html>

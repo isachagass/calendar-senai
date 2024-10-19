@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Oriya:wght@400..700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #ffdfe1;
+}
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section{
+    width: 80%;
+    height: 80vh;
+    background-color: #fffcfc;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    /* align-items: center; */
+    margin: auto;
+}
+#esquerda{
+    /* width: 40%; */
+    flex-grow: 1;
+    height: 100%;
+    background-color: #ffb2c1;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#esquerda img{
+    width: 100%;
+    margin-bottom: 5px;
+}
+#esquerda p{
+    color: #ff005f;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 8px;
+}
+#direita{
+    /* padding: 9px; */
+    /* width: 60%; */
+    flex-grow: 1;
+    height: 100%;
+}
+#container{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+#direita h1{
+    font-family: "Noto Serif Oriya", serif;
+    font-size: xx-large;
+    text-align: center;
+    color: #ff91b2;
+    margin-top: 9px;
+}
+#direita table{
+    width: 100%;
+    height: 55%;
+    margin-bottom: 9px;
+    border-collapse: collapse;
+}
+table th{
+    background-color: #ffb2c1;
+    color: #3c363b;
+}
+table th:nth-child(1){
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    color: #e30075;
+}
+table th:last-child{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #e30075;
+}
+table td{
+    width: 10%;
+    text-align: center;
+    padding: 3px;
+    color: #3c363b;
+   
+}
+table td:hover{
+    background-color: #d8d8d8;
+    border-radius: 20px;
+    font-weight: 600;
+}
+table td:nth-child(1), td:nth-child(7){
+    color: #e30075;
+}
+.feriado{
+    color: #e30075;
+    background-color: #ffb9ce;
+    border-radius: 20px;
+    font-weight: 600;
+}
+#direita article{
+    align-items: flex-start;
+    margin: 5px;
+    padding: 5px;
+}
+#direita article p{
+    color: #e30075;
+    font-weight: 500;
+}
+.diaAtual{
+    background-color: #ff91b2;
+    border-radius: 20px;
+    font-weight: 600;
+}
