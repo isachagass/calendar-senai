@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Oriya:wght@400..700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #e1f5c4;
+    display: flex;
+    align-items: center;
+}
+main{
+    width: 70%;
+    height: 80vh;
+    border-radius: 15px;
+    margin: auto;
+    background-color: #fffcfc;
+}
+main h1{
+    font-family: "Noto Serif Oriya", serif;
+    font-size: xx-large;
+    text-align: center;
+    color: #a7cd2c;
+    margin-top: 9px;
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 5px;
+}
+header button{
+    border: none;
+    background-color: #fffcfc;
+    box-shadow: none;
+    
+}
+header button img{
+    width: 60%;
+}
+
+#calendario{
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    
+}
+.cabecalho{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    background-color: #95aa61;
+    color: #121310;
+    font-weight: 600;
+    padding: 6px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+.cabecalho div:nth-child(1), .cabecalho div:nth-child(7){
+    color: #d6e68a;
+}
+
+.dias{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-top: 15px;
+}
+.dias div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dias div:hover, .selecionado{
+    background-color: #d8d8d8;
+    border-radius: 15px;
+    font-weight: 600;
+}
+.destaque{
+    color: #95aa61 ;
+}
+#ano{
+    margin-right: 10px;
+    /* text-align: end; */
+}
+#mensagem{
+    font-family: "Noto Serif Oriya", serif;
+    text-align: center;
+    margin-top: 8px;
+    color: #121310;
+    /* font-size:; */
+}
+/* .selecionado{
+    background-color: #d8d8d8;
+    border-radius: 15px;
+    font-weight: 600;
+} */
