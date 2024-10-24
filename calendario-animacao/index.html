@@ -6,19 +6,42 @@
     <title>Calendário - js</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-    <main>
+<body id="bodyCor">
+    <main id="mainCor">
+        <div class="navegacao">
+            <button class="hamburguer" onclick="show()">
+                <div id="bar1" class="bar"></div>
+                <div id="bar2" class="bar"></div>
+                <div id="bar3" class="bar"></div>
+            </button>
+     
+            <nav>
+                <ul>
+                   <li id="alterarTema" onclick="mudarTema()">Alterar o tema</li>
+                        <!-- <ul id="listaTema" class="escondido">
+                            <li id="claro"><img src="./images/iconeLista.png" alt="">Tema Claro</li>
+                            <li id="escuro" onclick="temaEscuro()"><img src="./images/iconeLista.png" alt="">Tema Escuro</li>
+                        </ul> -->
+                   <li id="mudarCalendario">Mudar calendário</li>
+                </ul>
+            </nav>
+     
+     
+        </div>
+        
         <header>
             <button id="voltar"><img src="./images/voltar.png" alt="Seta para voltar"></button>
             <h1 id="mes"></h1>
             <button id="avancar"><img src="./images/anvancar.png" alt="Seta para seguir"></button>
-            
+
+            <!-- <h1>&lt;</h1> -->
+
         </header>
         <section id="calendario">
             
         </section>
-        <h1 id="ano"></h1>
-        <p id="mensagem"></p>
+        <h1 id="ano" class="tituloCor"></h1>
+        <p id="mensagem" class="tituloCor"></p>
 
 
 

@@ -104,10 +104,14 @@ header button img{
 .dias div:hover{
     transform:  scale(1.07);
 }
-.dias div:hover, .selecionado{
+.dia.claro:hover, .selecionado{
     background-color: #e5f3dc;
     border-radius: 15px;
     font-weight: 600;
+}
+.dia.escuro:hover, .selecionado{
+    background-color: #c4c8c5;
+    color: #2f2f2f;
 }
 .destaque{
     color: #95aa61 ;
@@ -128,3 +132,135 @@ header button img{
     border-radius: 15px;
     font-weight: 600;
 } */
+
+/*menu hamburguer:*/
+button{
+    cursor: pointer;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+
+}
+nav{
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 250px;
+    
+}
+.navegacao{
+    position: fixed;
+    right: -500px;
+    width: 350px;
+    height: 100%;
+    background-color: rgba(245, 246, 243, 0.908);
+    transition:  .5s;
+    font-family: "Noto Serif Oriya", serif;
+    
+}
+.navegacao ul{
+    width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: end; */
+}
+.navegacao ul li{
+    color: white;
+    text-align: right;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 1.5em;
+    padding: 10px 25px;
+    color: #2f2f2f;
+    /* border-bottom: 1pt solid #2f2f2f; */
+}
+.hamburguer, .bar{
+    position: fixed;
+}
+.hamburguer {
+    display: block;
+    top: 5%;
+    left: 95%;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    border: 0;
+    background: 0 0;
+}
+.bar{
+    top: 3px;
+    background: #436106;
+    width: 100%;
+    height: 4px;
+    transition: all .3s ease-in;
+}
+#bar2{
+    top: 11px;
+}
+#bar3{
+    top: 19px;
+}
+.navegacao.ativada{
+    right: 0;
+
+}
+.hamburguer.abrir #bar1{
+    background-color: #436106;
+    transform: rotate(45deg) translate(6px, 5px);
+}
+.hamburguer.abrir #bar2{
+    background-color: transparent;
+}
+.hamburguer.abrir #bar3{
+    background-color: #436106;
+    transform: rotate(-45deg) translate(6px, -5px);
+}
+@media (max-width: 768px){
+    .navegacao{
+        width: 250px;
+    }
+    .navegacao ul li {
+        font-size: 1.2em; 
+        padding: 10px 15px;
+    }
+    .hamburguer {
+        top: 3%;
+        left: 90%;
+        width: 25px; 
+        height: 25px;
+    }
+
+}
+@media (max-width: 480px){
+    .navegacao{
+        width: 180px;
+    }
+    .navegacao ul li {
+        font-size: 0.8em; 
+        padding: 14px 0px;
+        width: 135px;
+    }
+    .hamburguer {
+        top: 3%;
+        left: 85%;
+        width: 20px; 
+        height: 20px;
+    }
+}
+/* .escondido {
+    display: none;
+}
+.mostrar {
+    display: block;
+    padding: 10px;
+    color: #121310;
+} */
+#listaTema{
+    width: 250px;
+    right: 150px;
+}
+#listaTema li{
+    padding: 0px;
+    font-size: 1.3em;
+    text-align: justify;
+    /* color: #2bd7c3; */
+
+}

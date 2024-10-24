@@ -14,6 +14,7 @@ const diaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
 const meses = ["Janeiro","Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 let calend_mes = document.getElementById("mes");
+calend_mes.classList.add('tituloCor')
 calend_mes.innerHTML = meses[mes];
 
 let calend_ano = document.getElementById("ano");
@@ -26,8 +27,12 @@ calendario.innerHTML = "";
 let topo = document.createElement("div");
 topo.className = "cabecalho";
 
-diaSemana.forEach(dia => {
+diaSemana.forEach((dia, index) => {
+    
     let criar_div = document.createElement("div");
+    if(index === 0 || index === 6){
+        criar_div.classList.add('destaqueSemanaCor');
+    }
     criar_div.textContent = dia;
     topo.appendChild(criar_div);
 });
@@ -141,3 +146,92 @@ function exibirDia(dia, mes, ano, meses){
 }
 
 gerarCalendario(mes, ano);
+
+
+//menu hamburguer:
+// function aparecer() {
+
+//     // const mostrarTemas = document.getElementById('alterarTema');
+//     const listaTema = document.getElementById('listaTema');
+//     listaTema.classList.toggle('esconder');
+//     listaTema.classList.toggle('mostrar'); 
+// };
+
+function show() {
+    document.querySelector('.hamburguer').classList.toggle('abrir');
+    document.querySelector('.navegacao').classList.toggle('ativada');
+}
+
+
+const dias = document.querySelectorAll('.dia');
+dias.forEach(dia => {
+    dia.classList.remove('claro', 'escuro');
+    dia.classList.add(temaAtual === "claro" ? 'claro' : 'escuro');
+});
+
+let tema = "claro";
+function mudarTema(){
+    const bodyCor = document.querySelector('#bodyCor');
+    const mainCor = document.querySelector('#mainCor');
+    const titulos = document.getElementsByClassName('tituloCor');
+    const cabecalhoCor = document.querySelector('.cabecalho');
+    const destaqueCor = document.getElementsByClassName('destaque');
+    const destaqueSemanaCor = document.getElementsByClassName('destaqueSemanaCor');
+    const dias = document.querySelectorAll('.dia');
+    const diasCor = document.getElementsByClassName('dia');
+
+
+    if(tema == "claro"){
+        bodyCor.style.backgroundColor = '#e1f5c4';
+        mainCor.style.backgroundColor = '#fffcfc';
+        cabecalhoCor.style.backgroundColor = '#95aa61';
+
+        for(let i = 0; i < titulos.length; i++){
+            titulos[i].style.color = '#a7cd2c';
+        }
+
+        for(let i = 0; i < diasCor.length; i++){
+            diasCor[i].style.color = '#2f2f2f';
+        }
+
+        for(let i = 0; i < destaqueCor.length; i++){
+            destaqueCor[i].style.color = '#95aa61';
+        }
+
+        for(let i = 0; i < destaqueSemanaCor.length; i++){
+            destaqueSemanaCor[i].style.color = '#d6e68a';
+        }
+        tema = "escuro";
+    } 
+    else{
+
+        bodyCor.style.backgroundColor = '#484450';
+        mainCor.style.backgroundColor = '#466067';
+        cabecalhoCor.style.backgroundColor = '#459a96';
+
+        
+        for(let i = 0; i < titulos.length; i++){
+            titulos[i].style.color = '#459a96';
+        }
+
+        for(let i = 0; i < diasCor.length; i++){
+            diasCor[i].style.color = '#c4c8c5';
+            diasCor[i].classList.remove('claro'); 
+            diasCor[i].classList.add('escuro');
+        }
+
+        for(let i = 0; i < destaqueCor.length; i++){
+            destaqueCor[i].style.color = '#459a96';
+        }
+
+        for(let i = 0; i < destaqueSemanaCor.length; i++){
+            destaqueSemanaCor[i].style.color = '#2bd7c3';
+        }
+
+        tema = "claro";
+    }
+}
+
+
+
+
