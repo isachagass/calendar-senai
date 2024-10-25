@@ -40,11 +40,16 @@ header button{
     border: none;
     background-color: #fffcfc;
     box-shadow: none;
+    background-color: transparent;
+    color: #121310;
+    width: 30%;;
+    font-size: 2em;
+    cursor: pointer;
     
 }
-header button img{
+/* header button img{
     width: 60%;
-}
+} */
 
 #calendario{
     width: 80%;
@@ -104,12 +109,13 @@ header button img{
 .dias div:hover{
     transform:  scale(1.07);
 }
-.dia.claro:hover, .selecionado{
-    background-color: #e5f3dc;
+.dia:hover, .selecionado{
+    background-color: #e0f7d1;
     border-radius: 15px;
     font-weight: 600;
+    color: #2f2f2f;
 }
-.dia.escuro:hover, .selecionado{
+.escuro:hover, .selecionado{
     background-color: #c4c8c5;
     color: #2f2f2f;
 }
@@ -118,26 +124,19 @@ header button img{
 }
 #ano{
     margin-right: 10px;
-    /* text-align: end; */
 }
 #mensagem{
     font-family: "Noto Serif Oriya", serif;
     text-align: center;
     margin-top: 8px;
     color: #121310;
-    /* font-size:; */
 }
-/* .selecionado{
-    background-color: #d8d8d8;
-    border-radius: 15px;
-    font-weight: 600;
-} */
+
 
 /*menu hamburguer:*/
 button{
     cursor: pointer;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-
+    
 }
 nav{
     position: absolute;
@@ -158,9 +157,6 @@ nav{
 }
 .navegacao ul{
     width: 100%;
-    /* display: flex;
-    flex-direction: column;
-    align-items: end; */
 }
 .navegacao ul li{
     color: white;
@@ -213,6 +209,20 @@ nav{
     background-color: #436106;
     transform: rotate(-45deg) translate(6px, -5px);
 }
+#alterarTema{
+    cursor: pointer;
+}
+/* .div2{
+    background-color: rgb(255, 255, 255, 0.8);
+    transition: background-color 0.3s ease;
+}
+.escuro .div2{
+    background-color: #484450;
+}
+
+.hamburguer.abrir ~ .div2{
+    background-color: rgba(255, 255, 255, 0.8);
+} */
 @media (max-width: 768px){
     .navegacao{
         width: 250px;

@@ -1,8 +1,4 @@
-
-
 const data = new Date();
-// var hoje = data.getDate();
-// hoje = int(hoje);
 var mes = data.getMonth();
 var ano = data.getFullYear();
 var diaSelecionado = null;
@@ -86,9 +82,7 @@ calendario.appendChild(dias);
 //apertar botão de voltar:
 const botaoVoltar = document.getElementById("voltar");
 botaoVoltar.addEventListener('click', function(){
-    mudarMes(-1);
-
-    
+    mudarMes(-1); 
 });
 
 //apertar botão avançar:
@@ -125,11 +119,6 @@ function mudarMes(direcao){
         }
         
         gerarCalendario(mes,ano);
-       
-
-        // calendario.classList.remove("calendario-sair");
-        // calendario.classList.add("calendario-entrar");
-
         setTimeout( () =>{
             calendario.style.opacity = '1';
         });
@@ -138,8 +127,6 @@ function mudarMes(direcao){
 
 //apertar o dia:
 function exibirDia(dia, mes, ano, meses){
-    // const meses = ["Janeiro","Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-
     const mensagem = document.getElementById("mensagem");
     mensagem.innerHTML = "";
     mensagem.textContent = `Dia ${dia} de ${meses[mes]} de ${ano}.`
@@ -149,42 +136,33 @@ gerarCalendario(mes, ano);
 
 
 //menu hamburguer:
-// function aparecer() {
-
-//     // const mostrarTemas = document.getElementById('alterarTema');
-//     const listaTema = document.getElementById('listaTema');
-//     listaTema.classList.toggle('esconder');
-//     listaTema.classList.toggle('mostrar'); 
-// };
-
 function show() {
     document.querySelector('.hamburguer').classList.toggle('abrir');
     document.querySelector('.navegacao').classList.toggle('ativada');
 }
 
-
-const dias = document.querySelectorAll('.dia');
-dias.forEach(dia => {
-    dia.classList.remove('claro', 'escuro');
-    dia.classList.add(temaAtual === "claro" ? 'claro' : 'escuro');
-});
-
+let menuAberto = false;
 let tema = "claro";
-function mudarTema(){
-    const bodyCor = document.querySelector('#bodyCor');
-    const mainCor = document.querySelector('#mainCor');
-    const titulos = document.getElementsByClassName('tituloCor');
-    const cabecalhoCor = document.querySelector('.cabecalho');
-    const destaqueCor = document.getElementsByClassName('destaque');
-    const destaqueSemanaCor = document.getElementsByClassName('destaqueSemanaCor');
-    const dias = document.querySelectorAll('.dia');
-    const diasCor = document.getElementsByClassName('dia');
 
+const bodyCor = document.querySelector('#bodyCor');
+const mainCor = document.querySelector('#mainCor');
+const titulos = document.getElementsByClassName('tituloCor');
+const cabecalhoCor = document.querySelector('.cabecalho');
+const destaqueCor = document.getElementsByClassName('destaque');
+const destaqueSemanaCor = document.getElementsByClassName('destaqueSemanaCor');
+const diasCor = document.getElementsByClassName('dia');
 
-    if(tema == "claro"){
+const mudarTema = document.getElementById("alterarTema");
+mudarTema.addEventListener('click', () =>{
+    tema = (tema === 'claro') ? 'escuro' : 'claro';
+
+    if(tema == "escuro"){
         bodyCor.style.backgroundColor = '#e1f5c4';
         mainCor.style.backgroundColor = '#fffcfc';
-        cabecalhoCor.style.backgroundColor = '#95aa61';
+        
+        if(cabecalhoCor){
+            cabecalhoCor.style.backgroundColor = '#95aa61';
+        }
 
         for(let i = 0; i < titulos.length; i++){
             titulos[i].style.color = '#a7cd2c';
@@ -192,6 +170,8 @@ function mudarTema(){
 
         for(let i = 0; i < diasCor.length; i++){
             diasCor[i].style.color = '#2f2f2f';
+            diasCor[i].classList.add('claro'); 
+            diasCor[i].classList.remove('escuro');
         }
 
         for(let i = 0; i < destaqueCor.length; i++){
@@ -201,14 +181,16 @@ function mudarTema(){
         for(let i = 0; i < destaqueSemanaCor.length; i++){
             destaqueSemanaCor[i].style.color = '#d6e68a';
         }
-        tema = "escuro";
+        
     } 
     else{
 
         bodyCor.style.backgroundColor = '#484450';
         mainCor.style.backgroundColor = '#466067';
-        cabecalhoCor.style.backgroundColor = '#459a96';
-
+        
+        if(cabecalhoCor){
+            cabecalhoCor.style.backgroundColor = '#34baab';
+        }
         
         for(let i = 0; i < titulos.length; i++){
             titulos[i].style.color = '#459a96';
@@ -228,10 +210,11 @@ function mudarTema(){
             destaqueSemanaCor[i].style.color = '#2bd7c3';
         }
 
-        tema = "claro";
-    }
-}
-
-
-
-
+        }
+        const dias = document.querySelectorAll('.dia');
+        dias.forEach(dia => {
+            dia.classList.remove('claro', 'escuro'); 
+            dia.classList.add(tema === "claro" ? 'claro' : 'escuro'); 
+        });
+        }
+);
