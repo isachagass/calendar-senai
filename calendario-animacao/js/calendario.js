@@ -8,109 +8,100 @@ let semanaAtual = 0;
 
 
 //calendario do mensal:
-function gerarCalendario(tipoCalendario){
+function gerarCalendario(tipoCalendario) {
 
-const diaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
-const meses = ["Janeiro","Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const diaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-let calend_mes = document.getElementById("mes");
-calend_mes.innerHTML = meses[mes];
+    let calend_mes = document.getElementById("mes");
+    calend_mes.innerHTML = meses[mes];
 
-let calend_ano = document.getElementById("ano");
-calend_ano.innerHTML = ano;
+    let calend_ano = document.getElementById("ano");
+    calend_ano.innerHTML = ano;
 
-const calendario = document.getElementById("calendario");
-calendario.innerHTML = "";
+    const calendario = document.getElementById("calendario");
+    calendario.innerHTML = "";
 
-// montar parte com os dias da semana
-let topo = document.createElement("div");
-topo.classList.add("cabecalho");
-if (tema === "escuro") topo.classList.add("escuro");
+    // montar parte com os dias da semana
+    let topo = document.createElement("div");
+    topo.classList.add("cabecalho");
+    if (tema === "escuro") topo.classList.add("escuro");
 
-diaSemana.forEach((dia, index) => {
-    
-    let criar_div = document.createElement("div");
-    if(index === 0 || index === 6){
-        criar_div.classList.add('destaqueSemanaCor');
+    diaSemana.forEach((dia, index) => {
+
+        let criar_div = document.createElement("div");
+        if (index === 0 || index === 6) {
+            criar_div.classList.add('destaqueSemanaCor');
+        }
+        if (tema === "escuro") criar_div.classList.add("escuro");
+        criar_div.textContent = dia;
+        topo.appendChild(criar_div);
+    });
+    calendario.appendChild(topo);
+
+    if (tipoCalendario === 'mensal') {
+        calendarioMensal(meses);
+    } else {
+        calendarioSemanal(meses);
     }
-    if (tema === "escuro") criar_div.classList.add("escuro");
-    criar_div.textContent = dia;
-    topo.appendChild(criar_div);
-});
-calendario.appendChild(topo);
 
-if(tipoCalendario === 'mensal'){
-    calendarioMensal(meses);
-} else{
-    calendarioSemanal(meses);
-}
-
-// const elementosEscuro = document.querySelectorAll(".escuro");
-// if(tema === 'claro'){
-//     elementosEscuro.forEach(elemento =>{
-//         elemento.classList.toggle('escuro')
-//     })
-// }
-
+    const elementosEscuro = document.querySelectorAll(".escuro");
+    if (tema === 'claro') {
+        elementosEscuro.forEach(elemento => {
+            elemento.classList.toggle('escuro')
+        })
+    }
 };
 
-function calendarioMensal(meses){
+function calendarioMensal(meses) {
     const calendario = document.getElementById("calendario");
-    
-        let qnt_dias = new Date(ano, mes+1, 0).getDate();
-        let primeiro_dia = new Date(ano, mes, 1).getDay();
-        let dias = document.createElement("div");
-        dias.className = "dias";
 
-        //dias em branco do mÊs anterior
-        for(let i = 0; i< primeiro_dia; i++){
-            let criar_div = document.createElement("div");
-            criar_div.className = "dia";
-            dias.appendChild(criar_div);
+    let qnt_dias = new Date(ano, mes + 1, 0).getDate();
+    let primeiro_dia = new Date(ano, mes, 1).getDay();
+    let dias = document.createElement("div");
+    dias.className = "dias";
+
+    //dias em branco do mÊs anterior
+    for (let i = 0; i < primeiro_dia; i++) {
+        let criar_div = document.createElement("div");
+        criar_div.className = "dia";
+        dias.appendChild(criar_div);
+    }
+    calendario.appendChild(dias);
+
+    //dias do mês atual
+    for (let dia = 1; dia <= qnt_dias; dia++) {
+        let criar_div = document.createElement("div");
+        criar_div.classList.add('dia');
+        if (tema === "escuro") criar_div.classList.add("escuro");
+        if ((dia + primeiro_dia) % 7 === 0 || (dia + primeiro_dia) % 7 === 1) {
+            criar_div.classList.add("destaque");
         }
-        calendario.appendChild(dias);
 
-        //dias do mês atual
-        for(let dia = 1; dia<=qnt_dias; dia++){
-            let criar_div = document.createElement("div");
-            criar_div.classList.add('dia');
-            if (tema === "escuro") criar_div.classList.add("escuro");
-            if ((dia+primeiro_dia) % 7 === 0 || (dia+primeiro_dia)%7 === 1){
-                criar_div.classList.add("destaque");
+
+        criar_div.textContent = dia;
+        criar_div.addEventListener('click', function () {
+
+            if (diaSelecionado) {
+                diaSelecionado.classList.remove("selecionado");
             }
-            
-            
-            criar_div.textContent = dia;
-            criar_div.addEventListener('click', function(){
-                
-                if(diaSelecionado){
-                    diaSelecionado.classList.remove("selecionado");
-                }
 
-                criar_div.classList.add ("selecionado");
-                diaSelecionado = criar_div;
-                
-                exibirDia(dia, mes, ano, meses);
+            criar_div.classList.add("selecionado");
+            diaSelecionado = criar_div;
 
-            });
-        
-            dias.appendChild(criar_div);
-        };
-        calendario.appendChild(dias);
+            exibirDia(dia, mes, ano, meses);
 
-        const elementosEscuro = document.querySelectorAll(".escuro");
-        if(tema === 'claro'){
-            elementosEscuro.forEach(elemento =>{
-                elemento.classList.toggle('escuro')
-            })
-        }
+        });
+
+        dias.appendChild(criar_div);
+    };
+    calendario.appendChild(dias);
 }
 
-
-function calendarioSemanal(meses){
+function calendarioSemanal(meses) {
     const calendario = document.getElementById('calendario');
-    
-    let primeiroDiaSemana = new Date(ano, mes, 1 +semanaAtual * 7);
+
+    let primeiroDiaSemana = new Date(ano, mes, 1 + semanaAtual * 7);
     let diaSemanaInicia = primeiroDiaSemana.getDay()
     primeiroDiaSemana.setDate(primeiroDiaSemana.getDate() - diaSemanaInicia);
 
@@ -124,9 +115,9 @@ function calendarioSemanal(meses){
     let dias = document.createElement("div");
     dias.className = "dias";
 
-   
-    for(let i = 0; i< 7; i++){
-        let dataAtual = new Date (anoAtual, mesAtual, primeiroDiaSemana.getDate() + i);
+
+    for (let i = 0; i < 7; i++) {
+        let dataAtual = new Date(anoAtual, mesAtual, primeiroDiaSemana.getDate() + i);
         let dia = document.createElement("div");
         dia.classList.add('dia', 'calenSemanal');
         dia.textContent = dataAtual.getDate();
@@ -135,94 +126,99 @@ function calendarioSemanal(meses){
 
         if (tema === 'escuro') dia.classList.add("escuro");
 
-        if(dataAtual.getMonth() !== mes) {
+        if (dataAtual.getMonth() !== mes) {
             dia.classList.add("foraMes");
         }
 
-        dia.addEventListener('click', function(){
-            
-            if(diaSelecionado){
+        dia.addEventListener('click', function () {
+
+            if (diaSelecionado) {
                 diaSelecionado.classList.remove("selecionado");
             }
 
-            dia.classList.add ("selecionado");
+            dia.classList.add("selecionado");
             diaSelecionado = dia;
-            
-            exibirDia(dataAtual.getDate(), mesAtual, anoAtual, meses);
 
+            exibirDia(dataAtual.getDate(), mesAtual, anoAtual, meses);
         });
-        
+
         dias.appendChild(dia);
     }
     calendario.appendChild(dias);
-
-    const elementosEscuro = document.querySelectorAll(".escuro");
-    if(tema === 'claro'){
-        elementosEscuro.forEach(elemento =>{
-            elemento.classList.toggle('escuro')
-        })
-    }
 }
 
 //apertar botão de voltar:
 const botaoVoltar = document.getElementById("voltar");
-botaoVoltar.addEventListener('click', function(){
-    if (tipoCalendario == "mensal"){
-    mudarMes(-1); }
-    else{
-        mudarSemana(-1);}
+botaoVoltar.addEventListener('click', function () {
+    if (tipoCalendario == "mensal") {
+        mudarMes(-1);
+    }
+    else {
+        mudarSemana(-1);
+    }
 });
 
 //apertar botão avançar:
 const botaoAvancar = document.getElementById("avancar");
-botaoAvancar.addEventListener('click', function(){
-    if (tipoCalendario == "mensal"){
-        mudarMes(1);}
-    else{
-        mudarSemana(1);}
+botaoAvancar.addEventListener('click', function () {
+    if (tipoCalendario == "mensal") {
+        mudarMes(1);
+    }
+    else {
+        mudarSemana(1);
+    }
 });
 
-function mudarMes(direcao){
+function mudarMes(direcao) {
     const calendario = document.getElementById("calendario");
 
     calendario.classList.add("transicao");
     calendario.style.opacity = '0';
 
-    setTimeout( () =>{
-        if(direcao === -1){
-            if (mes != 0){
+    setTimeout(() => {
+        if (direcao === -1) {
+            if (mes != 0) {
                 mes--;
-            }else{
+            } else {
                 ano--;
                 mes = 11;
             }
-            
-            
+
         }
-        if(direcao === 1){
-            if (mes != 11){
+        if (direcao === 1) {
+            if (mes != 11) {
                 mes++;
-            }else{
+            } else {
                 ano++;
                 mes = 0;
             }
-            
+
         }
-        
+
         gerarCalendario(tipoCalendario);
-        setTimeout( () =>{
+        setTimeout(() => {
             calendario.style.opacity = '1';
         });
-    },400);
+    }, 400);
 }
 
-function mudarSemana(direcao){
+function mudarSemana(direcao) {
+    const calendario = document.getElementById("calendario");
+    calendario.classList.add("transicao");
+    calendario.style.opacity = '0';
+
+    setTimeout(() => {
     semanaAtual += direcao;
     gerarCalendario(tipoCalendario);
+
+    setTimeout(() => {
+        calendario.style.opacity = '1';
+    });
+    }, 400);
 }
 
 //apertar o dia:
-function exibirDia(dia, mes, ano, meses){
+function exibirDia(dia, mes, ano, meses) {
     const mensagem = document.getElementById("mensagem");
     mensagem.innerHTML = "";
     mensagem.textContent = `Dia ${dia} de ${meses[mes]} de ${ano}.`
@@ -236,32 +232,31 @@ function show() {
 
 //alterar tema:
 const mudarTema = document.getElementById("alterarTema");
-mudarTema.addEventListener('click', () =>{
+mudarTema.addEventListener('click', () => {
     tema = (tema === 'claro') ? 'escuro' : 'claro';
     document.body.classList.toggle("escuro", tema === "escuro");
     document.getElementById("main").classList.toggle("escuro", tema === "escuro");
 
     const titulos = document.querySelectorAll(".tituloCor");
-    titulos.forEach(titulo => 
+    titulos.forEach(titulo =>
         titulo.classList.toggle("escuro", tema === "escuro"));
     gerarCalendario(tipoCalendario);
-    
+
 });
 
 // alterar tipo de calendario:
 const mudarCalendario = document.getElementById("mudarCalendario");
-mudarCalendario.addEventListener('click', () =>{
+mudarCalendario.addEventListener('click', () => {
     tipoCalendario = (tipoCalendario === 'mensal') ? 'semanal' : 'mensal';
     semanaAtual = 0;
 
-    if(tipoCalendario === 'mensal'){
+    if (tipoCalendario === 'mensal') {
         gerarCalendario(tipoCalendario);
         //ver como envia que é mensal
-    }else{
+    } else {
         gerarCalendario(tipoCalendario);
         //ver como envia que é semanal
     }
-
 })
 
 gerarCalendario(tipoCalendario);
