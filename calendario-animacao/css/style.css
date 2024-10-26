@@ -11,6 +11,9 @@ body{
     display: flex;
     align-items: center;
 }
+body.escuro{
+    background-color: #484450;
+}
 main{
     width: 70%;
     height: 80vh;
@@ -21,6 +24,9 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+main.escuro{
+    background-color: #466067;
 }
 main h1{
     font-family: "Noto Serif Oriya", serif;
@@ -47,10 +53,6 @@ header button{
     cursor: pointer;
     
 }
-/* header button img{
-    width: 60%;
-} */
-
 #calendario{
     width: 80%;
     height: 60%;
@@ -58,25 +60,15 @@ header button{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* margin: auto; */
     overflow: hidden;
     opacity: 1;
 }
-   
-/* .calendario-voltar{
-    opacity: 0;
-    transform: translateX(-100%);
-}
-.calendario-avancar{
-    opacity: 0;
-    transform: translateX(100%);
-}
-.calendario-sair{
-
-} */
- .transicao{
+.transicao{
     transition: opacity 0.5s ease;
- }
+}
+.tituloCor.escuro{
+    color: #36beb8;
+}
 .cabecalho{
     width: 100%;
     display: grid;
@@ -89,10 +81,15 @@ header button{
     border-radius: 15px;
     margin-top: 10px;
 }
-.cabecalho div:nth-child(1), .cabecalho div:nth-child(7){
+.cabecalho.escuro{
+    background-color:#34baab;
+}
+.destaqueSemanaCor{
     color: #d6e68a;
 }
-
+.destaqueSemanaCor.escuro{
+    color: #537c77;
+}
 .dias{
     width: 100%;
     height: 100%;
@@ -106,21 +103,32 @@ header button{
     justify-content: center;
     align-items: center;
 }
+.calenSemanal{
+    height: 30%;
+}
+.foraMes{
+    color: #51595c;
+}
+.foraMes.escuro{
+    color: #0a0a0a;
+}
+.dia.escuro{
+    color: #c4c8c5;
+}
 .dias div:hover{
     transform:  scale(1.07);
 }
-.dia:hover, .selecionado{
-    background-color: #e0f7d1;
+.dia:hover, .dia.selecionado{
+    background-color: #e6e9e3;
     border-radius: 15px;
     font-weight: 600;
     color: #2f2f2f;
 }
-.escuro:hover, .selecionado{
-    background-color: #c4c8c5;
-    color: #2f2f2f;
-}
 .destaque{
     color: #95aa61 ;
+}
+.destaque.escuro{
+    color: #2ac9c1;
 }
 #ano{
     margin-right: 10px;
@@ -132,18 +140,15 @@ header button{
     color: #121310;
 }
 
-
 /*menu hamburguer:*/
 button{
     cursor: pointer;
-    
 }
 nav{
     position: absolute;
     top: 100px;
     right: 20px;
     width: 250px;
-    
 }
 .navegacao{
     position: fixed;
@@ -152,8 +157,6 @@ nav{
     height: 100%;
     background-color: rgba(245, 246, 243, 0.908);
     transition:  .5s;
-    font-family: "Noto Serif Oriya", serif;
-    
 }
 .navegacao ul{
     width: 100%;
@@ -163,10 +166,10 @@ nav{
     text-align: right;
     text-transform: uppercase;
     list-style-type: none;
-    font-size: 1.5em;
+    font-size: 1.12em;
     padding: 10px 25px;
     color: #2f2f2f;
-    /* border-bottom: 1pt solid #2f2f2f; */
+    font-family: "Noto Serif Oriya", serif;
 }
 .hamburguer, .bar{
     position: fixed;
@@ -212,17 +215,6 @@ nav{
 #alterarTema{
     cursor: pointer;
 }
-/* .div2{
-    background-color: rgb(255, 255, 255, 0.8);
-    transition: background-color 0.3s ease;
-}
-.escuro .div2{
-    background-color: #484450;
-}
-
-.hamburguer.abrir ~ .div2{
-    background-color: rgba(255, 255, 255, 0.8);
-} */
 @media (max-width: 768px){
     .navegacao{
         width: 250px;
@@ -237,7 +229,6 @@ nav{
         width: 25px; 
         height: 25px;
     }
-
 }
 @media (max-width: 480px){
     .navegacao{
@@ -255,14 +246,6 @@ nav{
         height: 20px;
     }
 }
-/* .escondido {
-    display: none;
-}
-.mostrar {
-    display: block;
-    padding: 10px;
-    color: #121310;
-} */
 #listaTema{
     width: 250px;
     right: 150px;
@@ -271,6 +254,4 @@ nav{
     padding: 0px;
     font-size: 1.3em;
     text-align: justify;
-    /* color: #2bd7c3; */
-
 }
