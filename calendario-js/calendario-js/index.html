@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário - js</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body id="body" class="escuro">
+    <main id="main" class="escuro">
+        <div class="navegacao">
+            <button class="hamburguer" onclick="show()">
+                <div id="bar1" class="bar"></div>
+                <div id="bar2" class="bar div2"></div>
+                <div id="bar3" class="bar"></div>
+            </button>
+     
+            <nav>
+                <ul>
+                   <li id="alterarTema">Alterar o tema</li>
+                   <li id="mudarCalendario">Mudar calendário</li>
+                </ul>
+            </nav>
+     
+     
+        </div>
+        
+        <header>
+            <button id="voltar">&lt</button>
+            <h1 id="mes" class="tituloCor escuro"></h1>
+            <button id="avancar">&gt</button>
+
+        </header>
+        <section id="calendario">
+            
+        </section>
+        <h1 id="ano" class="tituloCor escuro"></h1>
+        <p id="mensagem"></p>
+
+        <dialog id="modal">
+            <span class="close">&times;</span>
+            <h2>Agende seu Evento</h2>
+            <form id="eventoForm" method="post">
+
+                <div>
+                    <label for="data_evento">Data do Evento:</label>
+                    <input type="text" id="data_evento" name="data_evento" readonly>
+                </div>
+
+                <div>
+                    <label for="nome_evento">Nome do Evento:</label>
+                    <input type="text" name="nome_evento" id="nome_evento" required>
+                </div>
+
+                <div>
+                    <label for="descricao_evento">Descrição:</label>
+                    <textarea type="text" name="descricao_evento" id="descricao_evento"></textarea>
+                </div>
+
+                <input type="submit" value="Salvar">
+            </form>
+        </dialog>
+
+
+
+
+    </main>
+    <script src="./js/calendario.js"></script>
+</body>
+</html>
