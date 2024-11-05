@@ -11,12 +11,22 @@ body{
     display: flex;
     align-items: center;
 }
+body.escuro{
+    background-color: #484450;
+}
 main{
     width: 70%;
     height: 80vh;
     border-radius: 15px;
     margin: auto;
     background-color: #fffcfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+main.escuro{
+    background-color: #466067;
 }
 main h1{
     font-family: "Noto Serif Oriya", serif;
@@ -26,6 +36,7 @@ main h1{
     margin-top: 9px;
 }
 header{
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -35,12 +46,13 @@ header button{
     border: none;
     background-color: #fffcfc;
     box-shadow: none;
+    background-color: transparent;
+    color: #121310;
+    width: 30%;;
+    font-size: 2em;
+    cursor: pointer;
     
 }
-header button img{
-    width: 60%;
-}
-
 #calendario{
     width: 80%;
     height: 60%;
@@ -48,8 +60,14 @@ header button img{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: auto;
-    
+    overflow: hidden;
+    opacity: 1;
+}
+.transicao{
+    transition: opacity 0.5s ease;
+}
+.tituloCor.escuro{
+    color: #36beb8;
 }
 .cabecalho{
     width: 100%;
@@ -63,10 +81,15 @@ header button img{
     border-radius: 15px;
     margin-top: 10px;
 }
-.cabecalho div:nth-child(1), .cabecalho div:nth-child(7){
+.cabecalho.escuro{
+    background-color:#34baab;
+}
+.destaqueSemanaCor{
     color: #d6e68a;
 }
-
+.destaqueSemanaCor.escuro{
+    color: #537c77;
+}
 .dias{
     width: 100%;
     height: 100%;
@@ -80,27 +103,224 @@ header button img{
     justify-content: center;
     align-items: center;
 }
-.dias div:hover, .selecionado{
-    background-color: #d8d8d8;
+.calenSemanal{
+    height: 30%;
+}
+.foraMes{
+    color: #51595c;
+}
+.foraMes.escuro{
+    color: #0a0a0a;
+}
+.dia.escuro{
+    color: #c4c8c5;
+}
+.dias div:hover{
+    transform:  scale(1.07);
+}
+.dia:hover, .dia.selecionado{
+    background-color: #e6e9e3;
     border-radius: 15px;
     font-weight: 600;
+    color: #2f2f2f;
 }
 .destaque{
     color: #95aa61 ;
 }
+.destaque.escuro{
+    color: #2ac9c1;
+}
 #ano{
     margin-right: 10px;
-    /* text-align: end; */
 }
 #mensagem{
     font-family: "Noto Serif Oriya", serif;
     text-align: center;
     margin-top: 8px;
     color: #121310;
-    /* font-size:; */
 }
-/* .selecionado{
-    background-color: #d8d8d8;
+
+/*menu hamburguer:*/
+button{
+    cursor: pointer;
+}
+nav{
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 250px;
+}
+.navegacao{
+    position: fixed;
+    right: -500px;
+    width: 350px;
+    height: 100%;
+    background-color: rgba(245, 246, 243, 0.908);
+    transition:  .5s;
+}
+.navegacao ul{
+    width: 100%;
+}
+.navegacao ul li{
+    color: white;
+    text-align: right;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 1.12em;
+    padding: 10px 25px;
+    color: #2f2f2f;
+    font-family: "Noto Serif Oriya", serif;
+}
+.hamburguer, .bar{
+    position: fixed;
+}
+.hamburguer {
+    display: block;
+    top: 5%;
+    left: 95%;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    border: 0;
+    background: 0 0;
+}
+.bar{
+    top: 3px;
+    background: #436106;
+    width: 100%;
+    height: 4px;
+    transition: all .3s ease-in;
+}
+#bar2{
+    top: 11px;
+}
+#bar3{
+    top: 19px;
+}
+.navegacao.ativada{
+    right: 0;
+
+}
+.hamburguer.abrir #bar1{
+    background-color: #436106;
+    transform: rotate(45deg) translate(6px, 5px);
+}
+.hamburguer.abrir #bar2{
+    background-color: transparent;
+}
+.hamburguer.abrir #bar3{
+    background-color: #436106;
+    transform: rotate(-45deg) translate(6px, -5px);
+}
+#alterarTema{
+    cursor: pointer;
+}
+@media (max-width: 768px){
+    .navegacao{
+        width: 250px;
+    }
+    .navegacao ul li {
+        font-size: 1.2em; 
+        padding: 10px 15px;
+    }
+    .hamburguer {
+        top: 3%;
+        left: 90%;
+        width: 25px; 
+        height: 25px;
+    }
+}
+@media (max-width: 480px){
+    .navegacao{
+        width: 180px;
+    }
+    .navegacao ul li {
+        font-size: 0.8em; 
+        padding: 14px 0px;
+        width: 135px;
+    }
+    .hamburguer {
+        top: 3%;
+        left: 85%;
+        width: 20px; 
+        height: 20px;
+    }
+}
+#listaTema{
+    width: 250px;
+    right: 150px;
+}
+#listaTema li{
+    padding: 0px;
+    font-size: 1.3em;
+    text-align: justify;
+}
+
+/* ---------------- */
+#modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin: auto;
+    width: 40%;
+    height: 65%;
     border-radius: 15px;
+    border: 0.3px solid #c7c7c7;
+    background-color: #ffffff;
+} 
+span{
+    font-size: 2em;
+    padding: 5px 15px;
+    align-self: flex-start;
+}
+
+#modal h2{
+    text-align: center;
+    font-size: 1.3em;
     font-weight: 600;
-} */
+}
+#modal form{
+    width: 80%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+form div{
+    width: 100%;
+    min-height: 20%;
+    height: auto;
+}
+
+input,textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+textarea{
+    height: 60%;
+}
+
+input[type="submit"]{
+    width: 50%;
+    border-radius: 15px;
+    font-size: 1em;
+
+}
+input[type="submit"]:hover{
+    background-color: #cfcfcf;
+}
+
+.com-evento {
+    background-color: #cedfa5;  
+    border-radius: 15px;
+}
+.escuro.com-evento{
+    background-color: #089999;
+}
